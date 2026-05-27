@@ -2,244 +2,155 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8"> <!-- para que lea simbolos entre ellas la e;e -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- para que sea adaptable a cualquier dispositivo -->
-
     <title>Jonathan Reyes | Portfolio</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-    <!-- HERO primera sección visual que ve un usuario al entrar a un sitio web, ubicada justo debajo del menú de navegación. -->
-
-    <div id="matrix"></div>
+    <div id="matrix" aria-hidden="true"></div>
 
     <header>
-
-        <nav>
-            <!-- Etiqueta para definir enlaces de navegacion, como el menu  pricipal, indice de contenidos, enlaces de pie de pagina, entre otros -->
-
-            <h1>Jonathan Reyes</h1> <!-- titulo al lado de la barra superior de navegacion -->
+        <nav class="underline-nav" aria-label="Navegacion principal">
+            <h1>Jonathan Reyes</h1>
 
             <ul>
-                <!-- (Unordered List / Lista desordenada)  Es la etiqueta contenedora. Le avisa al navegador que todo lo que esté dentro forma parte de una misma lista. Por defecto, le añade un margen al bloque y los puntos (viñetas) a los elementos. -->
-
-                <li><a href="#about">Sobre mí</a></li>
-                <!-- (List Item / Elemento de lista): Es la etiqueta que envuelve a cada uno de los elementos individuales dentro de la lista. Siempre debe ir metida dentro de un contenedor de lista (como ). -->
-
+                <li><a href="#about">Sobre m&iacute;</a></li>
                 <li><a href="#skills">Skills</a></li>
-
                 <li><a href="#experience">Experiencia</a></li>
-
                 <li><a href="#certifications">Certificaciones</a></li>
-
                 <li><a href="#contact">Contacto</a></li>
-
             </ul>
-
         </nav>
 
-
-        <section class="hero">
-            <!--class="hero": Es un nombre (un identificador) que le pones a esa caja para poder seleccionarla desde tu archivo CSS. Al llamarla "hero", adoptas la convención estándar de la industria para el diseño web, lo que te permite aplicarle estilos específicos (como un fondo de pantalla completa, fuentes grandes, centrado con Flexbox y botones llamativos). -->
-
+        <section class="hero" id="home">
             <div class="hero-left">
+                <h2>Hola, soy Jonathan</h2>
 
-                <h2>
-                    Hola, soy Jonathan
-                </h2>
-
-                <div class="hero-right">
-
-                    <div class="profile-container">
-
-                        <div id="typing-bg"></div>
-
-                        <img src="assets/profile.png" alt="Jonathan">
-
-                    </div>
-
-                </div>
-
-                <h3>
-                    Jr Develoment • Network Engineer • Cybersecurity Enthusiast
-                </h3>
+                <h3>Software Development &bull; Web Development &bull; Cybersecurity</h3>
 
                 <p>
-
-                    Egresado de la carrera de Software y Redes
-
-                    apasionado por el desarrollo web, temas y habilidades en ciberseguridad
-
+                    Egresado de la carrera de Software y Redes, apasionado por el desarrollo web,
+                    los temas de ciberseguridad y el aprendizaje constante.
                 </p>
 
-
                 <div class="hero-tags">
-
                     <span>Linux</span>
-
                     <span>CCNA</span>
-
                     <span>Nmap</span>
-
                     <span>Burp Suite</span>
-
-                    <span>html</span>
-
-                    <span>css</span>
-
+                    <span>HTML</span>
+                    <span>CSS</span>
                     <span>Python</span>
-
                     <span>Java</span>
-
-
                 </div>
 
+                <div class="hero-buttons">
+                    <button type="button">Descargar CV</button>
+                </div>
+            </div>
 
+            <div class="hero-right">
+                <img src="assets/profile.png" alt="Jonathan Reyes" width="500" height="500" decoding="async">
+            </div>
+        </section>
+    </header>
 
+    <main>
+        <section id="about">
+            <h2>Sobre m&iacute;</h2>
+
+            <p>
+                Me gusta programar porque es una forma de transmitir ideas, de construir
+                soluciones y de hacer que las cosas funcionen mejor. Como dice la frase:
+                "si puedes imaginarlo, puedes programarlo". Y eso me fascina: que una idea
+                se convierta en realidad solo con l&iacute;neas de c&oacute;digo.
+            </p>
+
+            <p>
+                En cuanto a la ciberseguridad, mi motivaci&oacute;n es m&aacute;s profunda. No me preparo
+                solo por moda o por salida laboral. Me preparo para estar listo por si acaso.
+                Por si un d&iacute;a la verdad deja de existir. Por si la infraestructura se convierte
+                en reh&eacute;n. Por si la econom&iacute;a se desangra sin sangre.
+            </p>
+
+            <p>
+                Suena extremo, lo s&eacute;. Pero vivimos en un mundo donde eso ya no es ciencia
+                ficci&oacute;n. Y yo quiero ser de los que sepan qu&eacute; hacer cuando el sistema tiemble.
+                No por miedo, sino por responsabilidad.
+            </p>
+
+            <p>
+                Por eso sigo aprendiendo cada d&iacute;a: para programar un futuro m&aacute;s seguro y para
+                que, si alguien intenta romperlo, al menos encuentre a alguien que no se queda mirando.
+            </p>
         </section>
 
-    </header>
-    <!-- SOBRE MI -->
+        <section id="skills">
+            <h2>Power Skills</h2>
 
-    <section id="about">
+            <ul>
+                <li>Gestion&eacute; relaciones con clientes, identificando necesidades y ofreciendo soluciones.</li>
+                <li>Mantuve un historial consistente de cumplimiento de objetivos bajo presi&oacute;n.</li>
+                <li>Resolv&iacute; incidencias y gestion&eacute; expectativas con comunicaci&oacute;n clara y
+                    emp&aacute;tica.</li>
+                <li>Capacidad de s&iacute;ntesis y an&aacute;lisis comparativo.</li>
+                <li>Paciencia, empat&iacute;a y soporte a usuarios no t&eacute;cnicos.</li>
+                <li>Gesti&oacute;n de crisis y resoluci&oacute;n de conflictos.</li>
+                <li>Resiliencia y persistencia profesional.</li>
+            </ul>
+        </section>
 
-        <h2>Sobre mí</h2>
+        <section id="experience">
+            <h2>Experiencia</h2>
 
-        <p>
+            <article>
+                <h3>Ejecutivo Bancario</h3>
+                <p>Santander M&eacute;xico</p>
+            </article>
 
-            Me gusta programar porque es una forma de transmitir ideas, de construir soluciones, de hacer que las cosas
-            funcionen mejor. Como dice la frase: "si puedes imaginarlo, puedes programarlo". Y eso me fascina: que una
-            idea se convierta en realidad solo con lines de código.
+            <article>
+                <h3>Laboratorios T&eacute;cnicos y Entornos de Aprendizaje</h3>
+                <p>Laboratorios virtualizados / pr&aacute;ctica t&eacute;cnica independiente</p>
+            </article>
+        </section>
 
-            En cuanto a la ciberseguridad, mi motivación es más profunda. No me preparo solo por moda o por salida
-            laboral. Me preparo para estar listo por si acaso. Por si un día la verdad deja de existir. Por si la
-            infraestructura se convierte en rehén. Por si la economía se desangra sin sangre.
+        <section id="certifications">
+            <h2>Certificaciones</h2>
 
-            Suena extremo, lo sé. Pero vivimos en un mundo donde eso ya no es ciencia ficción. Y yo quiero ser de los
-            que sepan qué hacer cuando el sistema tiemble. No por miedo, sino por responsabilidad.
+            <ul>
+                <li>CCNA: Fundamentos de conmutaci&oacute;n, enrutamiento y redes inal&aacute;mbricas.</li>
+                <li>CCNA: Switching, Routing and Wireless Essentials.</li>
+                <li>CCNA: Redes empresariales, seguridad y automatizaci&oacute;n.</li>
+                <li>Linux Fundamentals.</li>
+                <li>Emprendimientos creativos.</li>
+            </ul>
+        </section>
 
-            Por eso sigo aprendiendo cada día. Para programar un futuro más seguro. Y para que, si alguien intenta
-            romperlo, al menos encuentre a alguien que no se queda mirando.
-        </p>
+        <section id="contact">
+            <h2>Contacto</h2>
 
+            <p>Email: <a href="mailto:jonathang7395@gmail.com">jonathang7395@gmail.com</a></p>
 
-    </section>
+            <button class="git-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="https:github.com/AlfredProtocol">
 
-    <!-- SKILLS -->
-
-    <section id="skills">
-
-        <h2>Skills</h2>
-
-        <ul>
-
-            <li>Linux</li>
-
-            <li>CCNA</li>
-
-            <li>Nmap</li>
-
-            <li>Burp Suite</li>
-
-            <li>Networking</li>
-
-            <li>Python</li>
-
-        </ul>
-
-    </section>
-
-    <!-- EXPERIENCIA -->
-
-    <section id="experience">
-
-        <h2>Experiencia</h2>
-
-        <article>
-
-            <h3>
-                Ejecutivo Bancario
-            </h3>
+                    <path
+                        d="M12 0.296997C5.37 0.296997 0 5.67 0 12.297C0 17.6 3.438 22.097 8.205 23.682C8.805 23.795 9.025 23.424 9.025 23.105C9.025 22.82 9.015 22.065 9.01 21.065C5.672 21.789 4.968 19.455 4.968 19.455C4.422 18.07 3.633 17.7 3.633 17.7C2.546 16.956 3.717 16.971 3.717 16.971C4.922 17.055 5.555 18.207 5.555 18.207C6.625 20.042 8.364 19.512 9.05 19.205C9.158 18.429 9.467 17.9 9.81 17.6C7.145 17.3 4.344 16.268 4.344 11.67C4.344 10.36 4.809 9.29 5.579 8.45C5.444 8.147 5.039 6.927 5.684 5.274C5.684 5.274 6.689 4.952 8.984 6.504C9.944 6.237 10.964 6.105 11.984 6.099C13.004 6.105 14.024 6.237 14.984 6.504C17.264 4.952 18.269 5.274 18.269 5.274C18.914 6.927 18.509 8.147 18.389 8.45C19.154 9.29 19.619 10.36 19.619 11.67C19.619 16.28 16.814 17.295 14.144 17.59C14.564 17.95 14.954 18.686 14.954 19.81C14.954 21.416 14.939 22.706 14.939 23.096C14.939 23.411 15.149 23.786 15.764 23.666C20.565 22.092 24 17.592 24 12.297C24 5.67 18.627 0.296997 12 0.296997Z"
+                        fill="white"></path>
+                </svg>
+                <span class="text">AlfredProtocol</span>
+            </button>
 
             <p>
-                Santander México
+                <a href="https://www.linkedin.com/in/jonathan-reyes-3091893a8/" target="_blank"
+                    rel="noreferrer">LinkedIn</a>
             </p>
-
-        </article>
-
-        <article>
-
-            <h3>
-                Laboratorios Tecnicos y Entornos de Aprendizaje
-            </h3>
-
-            <p>
-                Laboratorios virtualizados / Practica tecnica Independiente
-            </p>
-
-        </article>
-
-    </section>
-
-    <!-- CERTIFICACIONES -->
-
-    <section id="certifications">
-
-        <h2>Certificaciones</h2>
-
-        <ul>
-
-            <li>CCNA Switching Routing & Wireless</li>
-
-            <li>CCNA Enterprise Security</li>
-
-            <li>Linux Fundamentals</li>
-
-        </ul>
-
-    </section>
-
-    <!-- CONTACTO -->
-    <div class="hero-buttons">
-
-        <button>
-
-            Descargar CV
-
-        </button>
-
-    </div>
-
-
-    <section id="contact">
-
-        <h2>Contacto</h2>
-
-        <p>Email: jonathang7395@gmail.com</p>
-
-        <a href="https://github.com/AlfredProtocol" target="_blank">
-
-            GitHub
-
-        </a>
-
-        <br>
-
-        <a href="https://www.linkedin.com/in/jonathan-reyes-3091893a8/" target="_blank">
-
-            LinkedIn
-
-        </a>
-
-    </section>
-
+        </section>
+    </main>
 
     <script src="app.js"></script>
-
 </body>
 
 </html>

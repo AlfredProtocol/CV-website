@@ -1,112 +1,91 @@
-const terminal =
-document.getElementById(
-"typing-bg"
-);
+const matrix = document.getElementById("matrix");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const code = [
+const MAX_MATRIX_LINES = window.innerWidth <= 768 ? 8 : 14;
+const MATRIX_INTERVAL = window.innerWidth <= 768 ? 900 : 650;
 
-"> Initializing secure environment...",
-
-"$ sudo apt update",
-
-"$ ssh analyst@10.10.14.21",
-
-"$ nmap -sV -Pn target.local",
-
-"[+] 22/tcp open ssh",
-
-"[+] 443/tcp open https",
-
-"$ python3 scanner.py",
-
-"def analyze(network):",
-
-"   for host in hosts:",
-
-"      enumerate(host)",
-
-"      inspect(service)",
-
-"return report",
-
-"$ tcpdump -i eth0",
-
-"SELECT username",
-
-"FROM users",
-
-"WHERE role='admin';",
-
-"if(authentication==false){",
-
-"   deny_access();",
-
-"}",
-
-"while(system.online){",
-
-"   monitor();",
-
-"}",
-
-"$ sudo systemctl restart",
-
-"[✓] Scan completed",
-
-"[✓] Environment secured",
-
-"> waiting..."
-
+const fragments = [
+    "010101",
+    "sudo",
+    "ssh",
+    "nmap",
+    "root@box",
+    "{auth}",
+    "</dev>",
+    "0xAF12",
+    "[scan]",
+    "SELECT *",
+    "while(true)",
+    "tcpdump"
 ];
 
+let matrixTimer = null;
 
-let currentLine = 0;
-let currentChar = 0;
-
-function type(){
-
-if(currentLine >= code.length){
-
-terminal.innerHTML="";
-
-currentLine=0;
-
-currentChar=0;
-
+function randomFragment() {
+    return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
-const current =
-code[currentLine];
-
-terminal.innerHTML +=
-
-current[
-currentChar
-] || "";
-
-currentChar++;
-
-if(currentChar > current.length){
-
-terminal.innerHTML += "<br>";
-
-currentLine++;
-
-currentChar=0;
-
+function buildMatrixLine() {
+    const length = 2 + Math.floor(Math.random() * 3);
+    return Array.from({ length }, randomFragment).join(" ");
 }
 
-terminal.scrollTop =
-terminal.scrollHeight;
+function spawnMatrixLine() {
+    if (!matrix || document.hidden) {
+        return;
+    }
 
-setTimeout(
+    if (matrix.childElementCount >= MAX_MATRIX_LINES) {
+        matrix.firstElementChild?.remove();
+    }
 
-type,
+    const line = document.createElement("span");
+    line.className = "line";
+    line.textContent = buildMatrixLine();
+    line.style.left = `${Math.random() * 100}vw`;
+    line.style.animationDuration = `${7 + Math.random() * 5}s`;
+    line.style.fontSize = `${14 + Math.random() * 12}px`;
+    line.style.opacity = `${0.14 + Math.random() * 0.18}`;
 
-20
+    matrix.appendChild(line);
 
-);
-
+    line.addEventListener(
+        "animationend",
+        () => {
+            line.remove();
+        },
+        { once: true }
+    );
 }
 
-type();
+function startMatrix() {
+    if (!matrix || prefersReducedMotion || matrixTimer) {
+        return;
+    }
+
+    for (let i = 0; i < Math.min(6, MAX_MATRIX_LINES); i += 1) {
+        window.setTimeout(spawnMatrixLine, i * 250);
+    }
+
+    matrixTimer = window.setInterval(spawnMatrixLine, MATRIX_INTERVAL);
+}
+
+function stopMatrix() {
+    if (matrixTimer) {
+        window.clearInterval(matrixTimer);
+        matrixTimer = null;
+    }
+}
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        stopMatrix();
+        return;
+    }
+
+    startMatrix();
+});
+
+if (matrix) {
+    startMatrix();
+}
