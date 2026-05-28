@@ -1,91 +1,220 @@
-const matrix = document.getElementById("matrix");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+class MatrixConfig {
 
-const MAX_MATRIX_LINES = window.innerWidth <= 768 ? 8 : 14;
-const MATRIX_INTERVAL = window.innerWidth <= 768 ? 900 : 650;
+    static MOBILE_BREAKPOINT = 768;
 
-const fragments = [
-    "010101",
-    "sudo",
-    "ssh",
-    "nmap",
-    "root@box",
-    "{auth}",
-    "</dev>",
-    "0xAF12",
-    "[scan]",
-    "SELECT *",
-    "while(true)",
-    "tcpdump"
-];
-
-let matrixTimer = null;
-
-function randomFragment() {
-    return fragments[Math.floor(Math.random() * fragments.length)];
-}
-
-function buildMatrixLine() {
-    const length = 2 + Math.floor(Math.random() * 3);
-    return Array.from({ length }, randomFragment).join(" ");
-}
-
-function spawnMatrixLine() {
-    if (!matrix || document.hidden) {
-        return;
+    static get maxLines() {
+        return window.innerWidth <= this.MOBILE_BREAKPOINT
+            ? 8
+            : 14;
     }
 
-    if (matrix.childElementCount >= MAX_MATRIX_LINES) {
-        matrix.firstElementChild?.remove();
+    static get interval() {
+        return window.innerWidth <= this.MOBILE_BREAKPOINT
+            ? 900
+            : 650;
     }
 
-    const line = document.createElement("span");
-    line.className = "line";
-    line.textContent = buildMatrixLine();
-    line.style.left = `${Math.random() * 100}vw`;
-    line.style.animationDuration = `${7 + Math.random() * 5}s`;
-    line.style.fontSize = `${14 + Math.random() * 12}px`;
-    line.style.opacity = `${0.14 + Math.random() * 0.18}`;
+    static fragments = [
 
-    matrix.appendChild(line);
+        "sudo",
+        "ssh",
+        "nmap -sV",
+        "root@box",
+        "0xAF12",
+        "SELECT *",
+        "while(true)",
+        "tcpdump",
+        "git push",
+        "exploit.py",
+        "127.0.0.1",
+        "eth0",
+        "python3",
+        "systemctl",
+        "netstat",
+        "localhost"
 
-    line.addEventListener(
-        "animationend",
-        () => {
-            line.remove();
-        },
-        { once: true }
-    );
+    ];
 }
 
-function startMatrix() {
-    if (!matrix || prefersReducedMotion || matrixTimer) {
-        return;
+class FragmentGenerator {
+
+    constructor(fragments) {
+        this.fragments = fragments;
     }
 
-    for (let i = 0; i < Math.min(6, MAX_MATRIX_LINES); i += 1) {
-        window.setTimeout(spawnMatrixLine, i * 250);
+    randomFragment() {
+
+        return this.fragments[
+            Math.floor(
+                Math.random() * this.fragments.length
+            )
+        ];
     }
 
-    matrixTimer = window.setInterval(spawnMatrixLine, MATRIX_INTERVAL);
-}
+    generateLine() {
 
-function stopMatrix() {
-    if (matrixTimer) {
-        window.clearInterval(matrixTimer);
-        matrixTimer = null;
+        const length =
+            2 + Math.floor(Math.random() * 4);
+
+        return Array.from(
+            { length },
+            () => this.randomFragment()
+        ).join(" ");
     }
 }
 
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        stopMatrix();
-        return;
+class MatrixLine {
+
+    constructor(content) {
+
+        this.element =
+            document.createElement("span");
+
+        this.element.className = "line";
+
+        this.element.textContent = content;
+
+        this.applyStyles();
+
+        this.registerEvents();
     }
 
-    startMatrix();
-});
+    applyStyles() {
 
-if (matrix) {
-    startMatrix();
+        this.element.style.left =
+            `${Math.random() * 100}vw`;
+
+        this.element.style.animationDuration =
+            `${8 + Math.random() * 6}s`;
+
+        this.element.style.fontSize =
+            `${14 + Math.random() * 10}px`;
+
+        this.element.style.opacity =
+            `${0.08 + Math.random() * 0.12}`;
+    }
+
+    registerEvents() {
+
+        this.element.addEventListener(
+            "animationend",
+            () => this.remove(),
+            { once: true }
+        );
+    }
+
+    render(parent) {
+        parent.appendChild(this.element);
+    }
+
+    remove() {
+        this.element.remove();
+    }
 }
+
+class MatrixRenderer {
+
+    constructor(container, generator) {
+
+        this.container = container;
+
+        this.generator = generator;
+
+        this.intervalId = null;
+    }
+
+    createLine() {
+
+        if (
+            !this.container ||
+            document.hidden
+        ) {
+            return;
+        }
+
+        this.cleanup();
+
+        const content =
+            this.generator.generateLine();
+
+        const line =
+            new MatrixLine(content);
+
+        line.render(this.container);
+    }
+
+    cleanup() {
+
+        while (
+            this.container.childElementCount >=
+            MatrixConfig.maxLines
+        ) {
+            this.container.firstElementChild?.remove();
+        }
+    }
+
+    start() {
+
+        if (this.intervalId) {
+            return;
+        }
+
+        for (let i = 0; i < 5; i++) {
+
+            window.setTimeout(
+                () => this.createLine(),
+                i * 220
+            );
+        }
+
+        this.intervalId =
+            window.setInterval(
+                () => this.createLine(),
+                MatrixConfig.interval
+            );
+    }
+
+    stop() {
+
+        if (!this.intervalId) {
+            return;
+        }
+
+        clearInterval(this.intervalId);
+
+        this.intervalId = null;
+    }
+}
+
+class App {
+
+    constructor() {
+
+        this.matrixElement =
+            document.getElementById("matrix");
+    }
+
+    initialize() {
+
+        if (!this.matrixElement) {
+            return;
+        }
+
+        const generator =
+            new FragmentGenerator(
+                MatrixConfig.fragments
+            );
+
+        const renderer =
+            new MatrixRenderer(
+                this.matrixElement,
+                generator
+            );
+
+        renderer.start();
+    }
+}
+
+const app = new App();
+
+app.initialize();
