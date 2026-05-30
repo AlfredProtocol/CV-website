@@ -543,29 +543,42 @@ body {
     }
 }
 
+/* ==============
+ MOVILES
+================*/
+
 @media (max-width: 768px) {
 
-    .navbar {
+    /* ========================================================
+   RESPONSIVE MÓVIL (Android / iPhone)
+   ======================================================== */
+    @media (max-width: 768px) {
+        .main-navbar {
+            height: auto;
+            /* Permite que el contenedor crezca si el menú se despliega */
+            padding: 15px 0;
+        }
 
-        height: auto;
+        .nav-container {
+            flex-direction: column;
+            /* Apila los bloques en una sola fila vertical limpia */
+            gap: 15px;
+            text-align: center;
+        }
 
-        padding: 15px 0;
+        .nav-menu {
+            flex-direction: row;
+            /* En celulares pequeños, mantiene los links alineados en fila */
+            flex-wrap: wrap;
+            /* Si no caben, bajan de forma ordenada sin desbordar */
+            justify-content: center;
+            gap: 20px;
+        }
 
-        flex-direction: column;
-
-        gap: 15;
-
-        flex-direction: row;
-
-        flex-wrap: wrap;
-
-        display: none;
-        /* backdrop-filter: blur(4px);
-        flex-direction: column;
-
-        text-align: center;
-
-        gap: 18px; */
+        .nav-actions {
+            display: none;
+            /* Tip: Oculta el botón secundario en pantallas muy chicas para limpiar espacio */
+        }
     }
 
     .nav-links {
