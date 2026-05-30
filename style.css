@@ -549,53 +549,22 @@ body {
 
 @media (max-width: 768px) {
 
-    /* ========================================================
-   RESPONSIVE MÓVIL (Android / iPhone)
-   ======================================================== */
-    @media (max-width: 640px) {
-
-        .hero,
-        section,
-        nav {
-            padding-right: 6%;
-            padding-left: 6%;
-        }
-
-        .hero h2 {
-            font-size: 42px;
-        }
-
-        .hero h3 {
-            font-size: 20px;
-        }
-
-        .hero p,
-        #about p {
-            font-size: 18px;
-        }
-
-        section h2 {
-            font-size: 36px;
-        }
-
-        .hero-tags {
-            justify-content: center;
-        }
-
-        .nav-links {
-
-            flex-wrap: wrap;
-
-            justify-content: center;
-        }
-
-        .hero,
-        .section {
-
-            padding-inline: 6%;
-        }
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
     }
 
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero,
+
+    .section {
+
+        padding-inline: 6%;
+    }
 
     #contact {
         text-align: center;
