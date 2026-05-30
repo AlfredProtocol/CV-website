@@ -546,6 +546,8 @@ body {
         backdrop-filter: blur(4px);
         flex-direction: column;
 
+        text-align: center;
+
         gap: 18px;
     }
 
