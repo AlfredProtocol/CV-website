@@ -110,6 +110,9 @@ body {
 
     backdrop-filter: none;
 
+    will-change: transform;
+
+
     border-radius: 18px;
 
     z-index: 999;
@@ -543,12 +546,26 @@ body {
 @media (max-width: 768px) {
 
     .navbar {
-        backdrop-filter: blur(4px);
+
+        height: auto;
+
+        padding: 15px 0;
+
+        flex-direction: column;
+
+        gap: 15;
+
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        display: none;
+        /* backdrop-filter: blur(4px);
         flex-direction: column;
 
         text-align: center;
 
-        gap: 18px;
+        gap: 18px; */
     }
 
     .nav-links {
