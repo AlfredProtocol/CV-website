@@ -108,8 +108,7 @@ body {
     border:
         1px solid var(--border);
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter: none;
 
     border-radius: 18px;
 
