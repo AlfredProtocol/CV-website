@@ -86,7 +86,7 @@ body {
 
     position: fixed;
 
-    top: 20px;
+    top: 30px;
 
     left: 50%;
 
@@ -156,7 +156,7 @@ body {
 
 .hero {
 
-    min-height: 100vh;
+    min-height: 100dvh;
 
     display: grid;
 
@@ -539,10 +539,10 @@ body {
 @media (max-width: 768px) {
 
     .navbar {
+        backdrop-filter: blur(4px);
+        /*        flex-direction: column; */
 
-        flex-direction: column;
-
-        gap: 18px;
+        /*        gap: 18px; */
     }
 
     .nav-links {
