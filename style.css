@@ -552,165 +552,166 @@ body {
     /* ========================================================
    RESPONSIVE MÓVIL (Android / iPhone)
    ======================================================== */
-    @media (max-width: 768px) {
-        .main-navbar {
-            height: auto;
-            /* Permite que el contenedor crezca si el menú se despliega */
-            padding: 15px 0;
+    @media (max-width: 640px) {
+
+        .hero,
+        section,
+        nav {
+            padding-right: 6%;
+            padding-left: 6%;
         }
 
-        .nav-container {
-            flex-direction: column;
-            /* Apila los bloques en una sola fila vertical limpia */
-            gap: 15px;
-            text-align: center;
+        .hero h2 {
+            font-size: 42px;
         }
 
-        .nav-menu {
-            flex-direction: row;
-            /* En celulares pequeños, mantiene los links alineados en fila */
-            flex-wrap: wrap;
-            /* Si no caben, bajan de forma ordenada sin desbordar */
+        .hero h3 {
+            font-size: 20px;
+        }
+
+        .hero p,
+        #about p {
+            font-size: 18px;
+        }
+
+        section h2 {
+            font-size: 36px;
+        }
+
+        .hero-tags {
             justify-content: center;
-            gap: 20px;
         }
 
-        .nav-actions {
-            display: none;
-            /* Tip: Oculta el botón secundario en pantallas muy chicas para limpiar espacio */
+        .nav-links {
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+        }
+
+        .hero,
+        .section {
+
+            padding-inline: 6%;
         }
     }
 
-    .nav-links {
 
-        flex-wrap: wrap;
+    #contact {
+        text-align: center;
+    }
 
+    #contact p {
+        margin-bottom: 16px;
+    }
+
+    #contact a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    #contact a:hover {
+        text-decoration: underline;
+    }
+
+    .contact-copy {
+        color: #b5bfd3;
+    }
+
+    .contact-socials {
+        display: flex;
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 28px;
+        list-style: none;
     }
 
-    .hero,
-    .section {
-
-        padding-inline: 6%;
+    .social-item {
+        position: relative;
     }
-}
 
+    .social-tooltip {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 12px;
+        color: white;
+        border-radius: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        font-size: 14px;
+        white-space: nowrap;
+    }
 
-#contact {
-    text-align: center;
-}
+    .social-item:hover .social-tooltip,
+    .social-item:focus-within .social-tooltip {
+        opacity: 1;
+        visibility: visible;
+        top: -50px;
+    }
 
-#contact p {
-    margin-bottom: 16px;
-}
+    .social-link {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: white;
+        color: #444;
+        text-decoration: none;
+        transition: 0.35s;
+    }
 
-#contact a {
-    color: var(--primary);
-    text-decoration: none;
-}
+    #contact .social-link:hover,
+    #contact .social-link:focus-visible {
+        color: white;
+        text-decoration: none;
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
 
-#contact a:hover {
-    text-decoration: underline;
-}
+    .social-link svg {
+        z-index: 2;
+        width: 28px;
+        height: 28px;
+    }
 
-.contact-copy {
-    color: #b5bfd3;
-}
+    .social-fill {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        transition: 0.35s;
+    }
 
-.contact-socials {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-top: 28px;
-    list-style: none;
-}
+    .social-link:hover .social-fill,
+    .social-link:focus-visible .social-fill {
+        height: 100%;
+    }
 
-.social-item {
-    position: relative;
-}
+    .social-link[data-social="linkedin"] .social-fill,
+    .social-link[data-social="linkedin"]+.social-tooltip {
+        background: #0274b3;
+    }
 
-.social-tooltip {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 12px;
-    color: white;
-    border-radius: 8px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    font-size: 14px;
-    white-space: nowrap;
-}
+    .social-link[data-social="github"] .social-fill,
+    .social-link[data-social="github"]+.social-tooltip {
+        background: #24262a;
+    }
 
-.social-item:hover .social-tooltip,
-.social-item:focus-within .social-tooltip {
-    opacity: 1;
-    visibility: visible;
-    top: -50px;
-}
+    .social-link[data-social="instagram"] .social-fill,
+    .social-link[data-social="instagram"]+.social-tooltip {
+        background: linear-gradient(45deg, #405de6, #5b51db, #b33ab4, #c135b4, #e1306c, #fd1f1f);
+    }
 
-.social-link {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: white;
-    color: #444;
-    text-decoration: none;
-    transition: 0.35s;
-}
-
-#contact .social-link:hover,
-#contact .social-link:focus-visible {
-    color: white;
-    text-decoration: none;
-    transform: translateY(-6px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.social-link svg {
-    z-index: 2;
-    width: 28px;
-    height: 28px;
-}
-
-.social-fill {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 0;
-    transition: 0.35s;
-}
-
-.social-link:hover .social-fill,
-.social-link:focus-visible .social-fill {
-    height: 100%;
-}
-
-.social-link[data-social="linkedin"] .social-fill,
-.social-link[data-social="linkedin"]+.social-tooltip {
-    background: #0274b3;
-}
-
-.social-link[data-social="github"] .social-fill,
-.social-link[data-social="github"]+.social-tooltip {
-    background: #24262a;
-}
-
-.social-link[data-social="instagram"] .social-fill,
-.social-link[data-social="instagram"]+.social-tooltip {
-    background: linear-gradient(45deg, #405de6, #5b51db, #b33ab4, #c135b4, #e1306c, #fd1f1f);
-}
-
-.social-link[data-social="mail"] .social-fill,
-.social-link[data-social="mail"]+.social-tooltip {
-    background: linear-gradient(135deg, #ff6b6b, #ff8e53, #ffb347);
-}
+    .social-link[data-social="mail"] .social-fill,
+    .social-link[data-social="mail"]+.social-tooltip {
+        background: linear-gradient(135deg, #ff6b6b, #ff8e53, #ffb347);
+    }
