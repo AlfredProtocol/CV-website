@@ -524,9 +524,13 @@ body {
 
     .hero {
 
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        /* grid-template-columns: 1fr; */
 
         text-align: center;
+
+        gap: 40px;
+
     }
 
     .hero-tags,
@@ -540,9 +544,9 @@ body {
 
     .navbar {
         backdrop-filter: blur(4px);
-        /*        flex-direction: column; */
+        flex-direction: column;
 
-        /*        gap: 18px; */
+        gap: 18px;
     }
 
     .nav-links {
